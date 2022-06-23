@@ -13,13 +13,14 @@ steps:
   #     - "push"
   #     - "gcr.io/$PROJECT_ID/stedi-final:latest"
   - name: gcr.io/cloud-builders/docker
-    id: Tests
+    id: Build Tests
     args:
-      - build 
-      - -t 
-      - stedi-final-tests 
-      - ./integration-tests 
-      - "&&"
-      - run 
-      - -it 
+      - build
+      - -t
+      - stedi-final-tests
+      - ./integration-tests
+  - name: gcr.io/cloud-builders/docker
+    id: Run Tests
+    args:
+      - run
       - stedi-final-tests
