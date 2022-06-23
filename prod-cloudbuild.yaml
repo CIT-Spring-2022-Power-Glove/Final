@@ -1,0 +1,9 @@
+steps:
+  - name: gcr.io/cloud-builders/gke-deploy
+    id: Deploy
+    args:
+      - run
+      - --filename=manifest.yaml
+      - --image=gcr.io/$PROJECT_ID/stedi-final:latest
+      - --location=us-west1-b
+      - --cluster=cluster-2
