@@ -12,13 +12,14 @@ steps:
   #   args: 
   #     - "push"
   #     - "gcr.io/$PROJECT_ID/stedi-final:latest"
-  - name: 'gcr.io/cloud-builders/npm'
-    entrypoint: ./integration-tests
-    args: ['install']
-  # - name: 'gcr.io/cloud-builders/npm'
-  #   id: Check server readiness
-  #   args: ['readiness']
-  - name: 'gcr.io/cloud-builders/npm'
-    id: Test
-    entrypoint: ./integration-tests
-    args: ['run', 'test']
+  - name: gcr.io/cloud-builders/docker
+    id: Tests
+    args:
+      - build 
+      - -t 
+      - stedi-final-tests 
+      - ./integration-tests 
+      - "&&"
+      - run 
+      - -it 
+      - stedi-final-tests
