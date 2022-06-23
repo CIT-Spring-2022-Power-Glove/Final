@@ -34,8 +34,7 @@ steps:
       - stedi-final-tests
   - name: gcr.io/cloud-builders/gcloud
     id: Run Production Stedi API Trigger
-    args:
-    - gcloud 
+    args: 
     - pubsub
     - topics
     - publish
