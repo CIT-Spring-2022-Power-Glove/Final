@@ -1,26 +1,26 @@
 steps:
   # This step builds the container image.
   - name: "gcr.io/cloud-builders/docker"
-    id: Build
+    id: Build Stedi API
     args:
       - "build"
       - "-t"
       - "gcr.io/$PROJECT_ID/stedi-final:latest"
       - "./stedi-private-main"
   - name: "gcr.io/cloud-builders/docker"
-    id: Push
+    id: Push Stedi API
     args: 
       - "push"
       - "gcr.io/$PROJECT_ID/stedi-final:latest"
   - name: gcr.io/cloud-builders/docker
-    id: Build Tests
+    id: Build Integration Tests
     args:
       - build
       - -t
       - stedi-final-tests
       - ./integration-tests
   - name: gcr.io/cloud-builders/docker
-    id: Run Tests
+    id: Run Integration Tests
     args:
       - run
       - stedi-final-tests
