@@ -32,3 +32,12 @@ steps:
     args:
       - run
       - stedi-final-tests
+  - name: gcr.io/cloud-builders/gcloud
+    id: Run Production Stedi API Trigger
+    args:
+    - gcloud 
+    - pubsub
+    - topics
+    - publish
+    - deploy-prod-stedi-final
+    - --message="<3"
