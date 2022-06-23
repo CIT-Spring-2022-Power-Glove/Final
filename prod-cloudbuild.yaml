@@ -3,7 +3,7 @@ steps:
     id: Deploy
     args:
       - run
-      - --filename=manifest.yaml
+      - --filename=prod-manifest.yaml
       - --image=gcr.io/$PROJECT_ID/stedi-final:latest
       - --location=us-west1-b
       - --cluster=cluster-2
