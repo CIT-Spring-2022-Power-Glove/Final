@@ -36,6 +36,32 @@ spec:
               port: 4567
             initialDelaySeconds: 3
             periodSeconds: 3
+          # env:
+          #   - name: REDIS_PASSWORD
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: redis-secrets-dev
+          #         key: REDIS_PASS
+          #   - name: REDIS_HOST
+          #     value: "redis-stedi-dev"
+          #   - name: REDIS_PORT
+          #     value: "6379"
+          #   - name: REDIS_DB
+          #     value: "0"
+          #   - name: KAFKA_BROKER
+          #     value: "localhost:9092"
+          #   - name: TWILIO_ACCOUNT_SID
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: twilio-dev
+          #         key: twilio_account_sid
+          #   - name: TWILIO_AUTH_TOKEN
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: twilio-dev
+          #         key: twilio_token
+          #   - name: TWILIO_PHONE
+          #     value: "+17146778438"
 
 ---
 
