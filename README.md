@@ -7,8 +7,8 @@
 - [x] add dev cloudbuild trigger
 - [x] add dev loadbalancer
 - [x] add prod cloudbuild yaml
-- [ ] add prod cloudbuild trigger
-- [ ] trigger prod cloudbuild from dev cloudbuild
+- [x] add prod cloudbuild trigger
+- [x] trigger prod cloudbuild from dev cloudbuild
 - [x] add prod loadbalancer
 - [ ] figure out redis database
 - [ ] write more tests
