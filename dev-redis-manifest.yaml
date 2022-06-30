@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dev-stedi-redis-final
+  name: redis-stedi-dev
 spec:
   ports:
     - port: 6379
@@ -40,10 +40,14 @@ spec:
                 name: redis-secrets-dev
                 key: REDIS_PASS
           volumeMounts:
-            - name: dev-stedi-volume
+            - name: redis-dev-volume
               mountPath: /data
-      volumes:
-        - name: dev-stedi-volume
-          gcePersistentDisk:
-            pdName: dev-stedi-redis-final
-            fsType: ext4
+  volumeClaimTemplates:
+  - metadata:
+      name: redis-dev-volume
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 10Gi
