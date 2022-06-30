@@ -1,32 +1,32 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dev-stedi-redis-final
+  name: prod-stedi-redis-final
 spec:
   ports:
     - port: 6379
       name: redis
   clusterIP: None
   selector:
-    app: dev-stedi-redis-final
+    app: prod-stedi-redis-final
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: dev-stedi-redis-final
+  name: prod-stedi-redis-final
 spec:
   selector:
     matchLabels:
-      app: dev-stedi-redis-final  # has to match .spec.template.metadata.labels
-  serviceName: dev-stedi-redis-final
+      app: prod-stedi-redis-final  # has to match .spec.template.metadata.labels
+  serviceName: prod-stedi-redis-final
   replicas: 1
   template:
     metadata:
       labels:
-        app: dev-stedi-redis-final  # has to match .spec.selector.matchLabels
+        app: prod-stedi-redis-final  # has to match .spec.selector.matchLabels
     spec:
       containers:
-        - name: dev-stedi-redis-final
+        - name: prod-stedi-redis-final
           image: redis:3.2-alpine
           imagePullPolicy: Always
           args: ["--requirepass", "$(REDIS_PASS)", "--appendonly", "yes", "--save", "900", "1", "--save", "30", "2"]
@@ -37,14 +37,14 @@ spec:
           - name: REDIS_PASS
             valueFrom:
               secretKeyRef:
-                name: redis-secrets-dev
+                name: redis-secrets-prod
                 key: REDIS_PASS
           volumeMounts:
-            - name: redis-dev-volume
+            - name: redis-prod-volume
               mountPath: /data
   volumeClaimTemplates:
   - metadata:
-      name: redis-dev-volume
+      name: redis-prod-volume
     spec:
       accessModes:
         - ReadWriteOnce

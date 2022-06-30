@@ -54,12 +54,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: twilio-dev
-                  key: twilio_account_sid
+                  key: TWILIO_ACCOUNT_SID
             - name: TWILIO_AUTH_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: twilio-dev
-                  key: twilio_token
+                  key: TWILIO_AUTH_TOKEN
             - name: TWILIO_PHONE
               value: "+17146778438"
 
