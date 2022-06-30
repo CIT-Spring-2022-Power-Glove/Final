@@ -27,6 +27,12 @@ public class JedisClient {
 
     static {
         Config config = Configuration.getConfiguration();
+
+        System.out.println(System.getenv("REDIS_HOST"));
+        System.out.println(System.getenv("REDIS_PASSWORD"));
+        System.out.println(System.getenv("REDIS_PORT"));
+        System.out.println(System.getenv("REDIS_DB"));
+
         if (System.getenv("REDIS_HOST")!=null && !System.getenv("REDIS_HOST").isEmpty()){
 
             password = System.getenv("REDIS_PASSWORD");
