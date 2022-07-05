@@ -33,12 +33,6 @@ spec:
           ports:
             - containerPort: 6379
               name: redis
-          env:
-          - name: REDIS_PASS
-            valueFrom:
-              secretKeyRef:
-                name: redis-secrets-prod
-                key: REDIS_PASS
           volumeMounts:
             - name: redis-prod-volume
               mountPath: /data

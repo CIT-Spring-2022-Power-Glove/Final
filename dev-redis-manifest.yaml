@@ -45,15 +45,3 @@ spec:
       resources:
         requests:
           storage: 10Gi
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: dev-stedi-redis-final-loadbalancer
-spec:
-  selector:
-    app: dev-stedi-redis-final
-  type: LoadBalancer
-  ports:
-  - port: 6379
-    targetPort: 6379
