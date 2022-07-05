@@ -37,11 +37,6 @@ spec:
             initialDelaySeconds: 3
             periodSeconds: 3
           env:
-            - name: REDIS_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: redis-secrets-dev
-                  key: REDIS_PASS
             - name: REDIS_HOST
               value: "dev-stedi-redis-final"
             - name: REDIS_PORT
