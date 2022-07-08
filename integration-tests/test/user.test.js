@@ -18,11 +18,22 @@ describe('User', () => {
     });
 
     it('Should login the user', async () => {
+        // Ensure the user we're tying to login exists
+        try {
+            await axios.post("http://34.145.101.133/user", {
+                "userName": "benjamin@gmail.com",
+                "email": "benjamin@gmail.com",
+                "password": "N7T5PpQz!",
+                "verifyPassword": "N7T5PpQz!",
+                "accountType": "Personal",
+                "phone": faker.phone.number('###-###-#####')
+            });
+        } catch (e) { }
+        // Login the user
         const response = await axios.post("http://34.145.101.133/login", {
             "userName": "benjamin@gmail.com",
             "password": "N7T5PpQz!",
         });
-        
         response.status.should.be.equal(200);
     });
 });
