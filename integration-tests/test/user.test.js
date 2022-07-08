@@ -9,8 +9,6 @@ describe('User', () => {
         const response = await axios.post("http://34.145.101.133/user", {
             "userName": faker.internet.userName('test'),
             "email": faker.internet.email('test'),
-            // "userName": 'benjamin2',
-            // "email": 'benjamin@gmail.com',
             "password": "N7T5PpQz!",
             "verifyPassword": "N7T5PpQz!",
             "accountType": "Personal",
