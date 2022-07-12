@@ -155,6 +155,11 @@ public class WebAppRunner {
             }
             return riskScore(req.params(":customer"));
         }));
+        delete("/user/:username", (req,res)->{
+            userFilter(req,res);
+            CreateNewUser.deleteUser(req.params("username"));
+            return "deleted user";
+         });
 
         options("/*",
                 (request, response) -> {
@@ -281,5 +286,5 @@ public class WebAppRunner {
         }
         return Configuration.getConfiguration().getInt("suresteps.port"); //return default port if heroku-port isn't set (i.e. on localhost)
     }
-
+   
 }

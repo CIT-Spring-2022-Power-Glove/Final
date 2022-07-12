@@ -179,7 +179,15 @@ public class JedisData {
         return removeCount;
 
     }
+    public static void deleteJedis(Class clazz, String id) throws Exception{
+        try {
+            JedisClient.hdel(clazz.getSimpleName()+"Map", id);
+            JedisClient.zrem(clazz.getSimpleName(), id);
+        } catch (Exception e) {
 
+            throw (e);
+        }
+    }
 
 
 }
