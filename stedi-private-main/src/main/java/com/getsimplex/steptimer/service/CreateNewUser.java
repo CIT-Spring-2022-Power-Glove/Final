@@ -27,6 +27,9 @@ public class CreateNewUser {
         return createUser(createUser);
     }
 
+    public static void deleteUser(String userName) throws Exception{
+        JedisData.deleteJedis(User.class, userName);
+    }
 
     public static String createUser(User createUser) throws Exception{
         User addUser = new User();
@@ -127,9 +130,5 @@ public class CreateNewUser {
             return true;
         }
         return false;
-    }
-
-    public static void deleteUser(String userName) throws Exception{
-        JedisData.deleteJedis(User.class, userName);
     }
 }

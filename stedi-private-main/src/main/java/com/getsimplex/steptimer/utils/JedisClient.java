@@ -27,12 +27,6 @@ public class JedisClient {
 
     static {
         Config config = Configuration.getConfiguration();
-
-        System.out.println(System.getenv("REDIS_HOST"));
-        System.out.println(System.getenv("REDIS_PASSWORD"));
-        System.out.println(System.getenv("REDIS_PORT"));
-        System.out.println(System.getenv("REDIS_DB"));
-
         if (System.getenv("REDIS_HOST")!=null && !System.getenv("REDIS_HOST").isEmpty()){
 
             password = System.getenv("REDIS_PASSWORD");
@@ -236,6 +230,18 @@ public class JedisClient {
         }
     }
 
+    public static synchronized void hdel (String mapName, String key) throws Exception{
+        Jedis jedis = jedisPool.getResource();
+        try{
+            jedis.hdel(mapName, key);
+            jedisPool.returnResource(jedis);
+
+        } catch (Exception e){
+            jedisPool.returnBrokenResource(jedis);
+            throw new Exception("Tried setting: "+mapName+" key : "+key+" without success");
+        }
+    }
+
     public static synchronized Optional<String> hmget (String mapName, String key) throws Exception {
         Jedis jedis = jedisPool.getResource();
         try {
@@ -253,7 +259,5 @@ public class JedisClient {
             throw new Exception("Tried getting: " + mapName + " key: " + key + " without success");
         }
     }
-
-    
 
 }

@@ -72,6 +72,11 @@ public class WebAppRunner {
             }
             return validPassword;
         });
+        delete("/user/:username", (req,res)->{
+           userFilter(req,res);
+           CreateNewUser.deleteUser(req.params("username"));
+           return "deleted user";
+        });
         get ("/stephistory/:customer", (req, res)-> {
             try{
                 userFilter(req, res);
@@ -102,6 +107,11 @@ public class WebAppRunner {
                 response="Error creating customer";
             }
             return response;
+        });
+        post("/contact", (req, res)->{
+            System.out.println(req.body());
+            res.status(200);
+            return "sent";
         });
         get("/customer/:customer", (req, res)-> {
             try {
@@ -155,11 +165,6 @@ public class WebAppRunner {
             }
             return riskScore(req.params(":customer"));
         }));
-        delete("/user/:username", (req,res)->{
-            userFilter(req,res);
-            CreateNewUser.deleteUser(req.params("username"));
-            return "deleted user";
-         });
 
         options("/*",
                 (request, response) -> {
@@ -286,5 +291,5 @@ public class WebAppRunner {
         }
         return Configuration.getConfiguration().getInt("suresteps.port"); //return default port if heroku-port isn't set (i.e. on localhost)
     }
-   
+
 }
