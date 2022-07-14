@@ -1,14 +1,11 @@
-# Final
+# CIT Spring 2022 Final
 
-- [x] add code
-- [x] add quick test
-- [x] add dockerfile
-- [x] add dev cloudbuild yaml
-- [x] add dev cloudbuild trigger
-- [x] add dev loadbalancer
-- [x] add prod cloudbuild yaml
-- [x] add prod cloudbuild trigger
-- [x] trigger prod cloudbuild from dev cloudbuild
-- [x] add prod loadbalancer
-- [ ] figure out redis database
-- [ ] write more tests
+A repository that deploys and tests the STEDI API built by Bro. Murdock
+
+Dev
+[34.145.101.133](34.145.101.133)
+
+Prod
+[34.82.151.184](34.82.151.184)
+
+![image of running tests](https://cdn.discordapp.com/attachments/341062771263143938/997170098039181383/unknown.png)
